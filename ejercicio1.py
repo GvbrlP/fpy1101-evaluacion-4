@@ -1,7 +1,3 @@
-# =====================================================================
-# FUNCIONES DE MENÚ
-# =====================================================================
-
 def mostrar_menu():
     print("\n========== MENÚ PRINCIPAL ==========")
     print("1. Agregar libro")
@@ -19,10 +15,6 @@ def leer_opcion():
     except ValueError:
         return 0
 
-# =====================================================================
-# FUNCIONES DE VALIDACIÓN
-# =====================================================================
-
 def validar_titulo(titulo):
     return titulo.strip() != ""
 
@@ -39,10 +31,6 @@ def validar_prestamo(prestamo_str):
         return valor > 0
     except ValueError:
         return False
-
-# =====================================================================
-# FUNCIONES DE OPERACIONES DEL SISTEMA
-# =====================================================================
 
 def agregar_libro(biblioteca):
     titulo = input("Ingrese el título del libro: ")

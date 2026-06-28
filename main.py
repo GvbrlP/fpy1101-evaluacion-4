@@ -1,15 +1,13 @@
-# AQUÍ ESTÁ EL TRUCO: Importamos todas las funciones desde ejercicio1.py
 from ejercicio1 import (
     mostrar_menu, leer_opcion, agregar_libro, buscar_libro, 
     eliminar_libro, actualizar_disponibilidad, mostrar_libros
 )
 
 def main():
-    # Colección general (Lista de diccionarios)
     biblioteca = []
     
     while True:
-        mostrar_menu()  # Ahora Python sabe qué es porque lo importamos arriba
+        mostrar_menu()
         opcion = leer_opcion()
         
         if opcion == 1:
@@ -39,6 +37,5 @@ def main():
         else:
             print("Opción inválida. Por favor, intente nuevamente.")
 
-# Ejecutamos el programa principal
 if __name__ == "__main__":
     main()
