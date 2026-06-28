@@ -1,3 +1,7 @@
+# =====================================================================
+# FUNCIONES DE MENÚ
+# =====================================================================
+
 def mostrar_menu():
     print("\n========== MENÚ PRINCIPAL ==========")
     print("1. Agregar libro")
@@ -8,13 +12,16 @@ def mostrar_menu():
     print("6. Salir")
     print("=====================================")
 
-
 def leer_opcion():
     try:
         opcion = int(input("Seleccione una opción: "))
         return opcion
     except ValueError:
-        return 0  
+        return 0
+
+# =====================================================================
+# FUNCIONES DE VALIDACIÓN
+# =====================================================================
 
 def validar_titulo(titulo):
     return titulo.strip() != ""
@@ -32,6 +39,10 @@ def validar_prestamo(prestamo_str):
         return valor > 0
     except ValueError:
         return False
+
+# =====================================================================
+# FUNCIONES DE OPERACIONES DEL SISTEMA
+# =====================================================================
 
 def agregar_libro(biblioteca):
     titulo = input("Ingrese el título del libro: ")
@@ -56,7 +67,7 @@ def agregar_libro(biblioteca):
         "prestamo": int(prestamo_raw),
         "disponible": False
     }
-
+    
     biblioteca.append(nuevo_libro)
     print(f"Libro '{nuevo_libro['titulo']}' agregado con éxito.")
 
@@ -98,42 +109,3 @@ def mostrar_libros(biblioteca):
         print(f"Préstamo: {libro['prestamo']}")
         print(f"Estado: {estado_texto}")
         print("********************************************")
-
-def main():
-
-    biblioteca = []
-    
-    while True:
-        mostrar_menu()
-        opcion = leer_opcion()
-        
-        if opcion == 1:
-            agregar_libro(biblioteca)
-        elif opcion == 2:
-            titulo_b = input("Ingrese el título a buscar: ")
-            posicion = buscar_libro(biblioteca, titulo_b)
-            
-            if posicion != -1:
-                libro = biblioteca[posicion]
-                estado_texto = "DISPONIBLE" if libro["disponible"] else "SIN COPIAS"
-                print(f"\n[Libro Encontrado en posición {posicion}]")
-                print(f"Título: {libro['titulo']} | Copias: {libro['copias']} | Préstamo: {libro['prestamo']} días | Estado: {estado_texto}")
-            else:
-                print(f"El libro '{titulo_b}' no se encuentra registrado.")
-                
-        elif opcion == 3:
-            eliminar_libro(biblioteca)
-        elif opcion == 4:
-            actualizar_disponibilidad(biblioteca)
-            print("Disponibilidad de todos los libros actualizada correctamente.")
-        elif opcion == 5:
-            mostrar_libros(biblioteca)
-        elif opcion == 6:
-            print("“Gracias por usar el sistema. Vuelva Pronto”")
-            break
-        else:
-            print("Opción inválida. Por favor, intente nuevamente.")
-
-
-if __name__ == "__main__":
-    main()
